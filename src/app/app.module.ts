@@ -1,18 +1,32 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { Routes, RouterModule } from '@angular/router';
 
-import { AppRoutingModule } from './app-routing.module';
+// Ng Bootstrap Module
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
 import { AppComponent } from './app.component';
+import { ModalContainerComponent } from './modal-container.component';
+import { PhotoDetailComponent } from './photo-detail/photo-detail.component';
+
+const routes: Routes = [
+  { path: ':id', component: ModalContainerComponent }
+];
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ModalContainerComponent,
+    PhotoDetailComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    RouterModule.forRoot(routes),
+    NgbModule
   ],
-  providers: [],
+  entryComponents: [
+    PhotoDetailComponent
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
